@@ -1,0 +1,312 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: transparent;
+  background-color: beige;
+}
+
+.container {
+  min-height: 600px;
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px;
+  border-end-start-radius: 8px;
+  border-end-end-radius: 8px;
+  background-color: pink;
+  min-height: 14vh;
+}
+
+.event-container, .sponsor, .options {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   min-height: 12vh;
+   min-width: 30vw;
+}
+
+.options {
+    flex-direction: row;
+    gap: 25px;
+}
+
+
+
+.egg-grid {
+  padding: 60px;
+  display: grid;
+  border: solid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.egg-container {
+  overflow: hidden;
+  cursor: pointer;
+  border: solid;
+}
+
+.egg-stage {
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.egg canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.lock-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.lock-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rarity-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 9px;
+  pointer-events: none;
+}
+
+.egg-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 12px 14px 14px;
+}
+
+.egg-name {
+  margin-bottom: 3px;
+}
+
+.egg-creator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 3px;
+  gap: 5px;
+}
+
+.egg-meta {
+  margin-bottom: 0;
+}
+
+.creator-img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    margin-top: 2px;
+}
+
+#backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  pointer-events: none;
+}
+
+#backdrop.open {
+  pointer-events: all;
+}
+
+#modal {
+  width: 100%;
+  max-width: 520px;
+  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+#modalStage {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modalStage canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+#modalStageHint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+#modalClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+#modalBody {
+  padding: 22px 26px 26px;
+}
+
+#mRarity {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  margin-bottom: 8px;
+}
+
+#mName {
+  margin-bottom: 4px;
+}
+
+#mPts {
+  margin-bottom: 16px;
+}
+
+.hint-block {
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.hint-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hint-label {
+  margin-bottom: 3px;
+}
+
+.hint-text {
+  line-height: 1.5;
+}
+
+.info-blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.info-block {
+  padding: 12px 14px;
+}
+
+.info-label {
+  margin-bottom: 5px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+}
+
+#claimBtn {
+  flex: 1;
+  padding: 13px;
+  border: none;
+  cursor: pointer;
+}
+
+#claimBtn:disabled {
+  cursor: not-allowed;
+}
+
+/* overlay stuff */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.overlay-box {
+  width: 600px;
+  height: 350px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  overflow: hidden;
+}
+
+
+.overlay-preview {
+  flex: 1;
+  height: 100%;
+}
+
+.overlay-info {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* options stuff */
